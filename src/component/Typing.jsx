@@ -4,7 +4,108 @@ import TypingResult from "./TypingResult";
 
 class Typing extends Component {
 	state = {
-		words: [],
+		words: [
+			"twice",
+			"success",
+			"frog",
+			"help",
+			"knife",
+			"origin",
+			"changing",
+			"blind",
+			"pig",
+			"replied",
+			"shelter",
+			"according",
+			"piece",
+			"passage",
+			"joined",
+			"early",
+			"brain",
+			"massage",
+			"everybody",
+			"flew",
+			"empty",
+			"north",
+			"bicycle",
+			"jump",
+			"labor",
+			"know",
+			"frame",
+			"truth",
+			"work",
+			"horn",
+			"angle",
+			"thick",
+			"even",
+			"seed",
+			"well",
+			"to",
+			"industrial",
+			"merely",
+			"where",
+			"needle",
+			"pilot",
+			"numeral",
+			"saved",
+			"question",
+			"number",
+			"fall",
+			"clothing",
+			"notice",
+			"needed",
+			"wool",
+			"community",
+			"darkness",
+			"rose",
+			"bush",
+			"is",
+			"card",
+			"arm",
+			"factory",
+			"law",
+			"discover",
+			"youth",
+			"darkness",
+			"horn",
+			"troops",
+			"jar",
+			"remove",
+			"toy",
+			"additional",
+			"cell",
+			"push",
+			"telephone",
+			"pleasant",
+			"fact",
+			"fat",
+			"here",
+			"weight",
+			"bear",
+			"service",
+			"rocky",
+			"machine",
+			"object",
+			"additional",
+			"shorter",
+			"indicate",
+			"burn",
+			"cook",
+			"horn",
+			"till",
+			"instrument",
+			"industry",
+			"fine",
+			"song",
+			"triangle",
+			"rays",
+			"lungs",
+			"blow",
+			"tune",
+			"trip",
+			"situation",
+			"bill"
+		],
 		currentWord: "",
 		inputText: "",
 		correctOrWrong: "",
@@ -16,8 +117,9 @@ class Typing extends Component {
 		style: {}
 	};
 
-	componentDidMount = async () => {
-		let words = await this.getWords(100);
+	componentDidMount = () => {
+		// let words = await this.getWords(100);
+		let {words} = this.state;
 		this.setState({words});
 	};
 
@@ -25,12 +127,12 @@ class Typing extends Component {
 		!this.state.gameOver ? this.input.focus() : this.inputNum.focus();
 	};
 
-	async getWords(num) {
-		let response = await fetch(
-			`https://random-word-api.herokuapp.com/word?key=IW8OWAEM&number=${num}`
-		);
-		return response.json();
-	}
+	// async getWords(num) {
+	// 	let response = await fetch(
+	// 		`https://random-word-api.herokuapp.com/word?key=IW8OWAEM&number=${num}`
+	// 	);
+	// 	return response.json();
+	// }
 
 	handleChange = e => {
 		let {name, value} = e.target;
@@ -73,7 +175,8 @@ class Typing extends Component {
 
 	handleReset = async e => {
 		e.preventDefault();
-		let words = await this.getWords(100);
+		// let words = await this.getWords(100);
+		let {words} = this.state;
 		const {countTime} = this.state;
 		if (countTime <= 0) {
 			return;
